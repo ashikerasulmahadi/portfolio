@@ -15,17 +15,14 @@ experienceStyle.textContent=`
 @media(max-width:1050px){.art-tag{left:-25px;right:auto}}@media(max-width:900px){.experience-grid{grid-template-columns:1fr}.experience-card.open,.experience-card.open:not(:last-child),.experience-card:nth-child(5),.experience-card:nth-child(5).open{grid-column:auto}.experience-card.open{transform:translateY(-5px) scale(1.005)}.art-tag{left:-18px;right:auto;bottom:65px}}@media(max-width:650px){.experience-section{padding-top:80px;padding-bottom:80px}.experience-card{padding:21px;border-radius:14px;min-height:210px}.role-top{display:block}.role-action{margin-top:18px}.role-top h3{font-size:20px}.experience-card:after{right:21px;bottom:14px;font-size:6px}.art-tag{left:-7px;right:auto;bottom:48px;width:104px;height:104px;padding:12px;font-size:7px;line-height:1.15;letter-spacing:.8px}.art-tag strong{font-size:7px;line-height:1.65;letter-spacing:.7px}}
 `;
 document.head.appendChild(experienceStyle);
-const flyerCard=document.querySelector('#work .case-c');
-if(flyerCard){const flyerPlaceholder=flyerCard.querySelector('.placeholder');if(flyerPlaceholder){flyerPlaceholder.classList.add('portfolio-image');flyerPlaceholder.innerHTML='<img src="assets/flyer-choix.jpg" alt="CHOIX promotional flyer designed by Ashike Rasul Mahadi" loading="lazy"><div class="portfolio-image-label"><small>03 · FLYER DESIGN</small><span>CHOIX · Promotional Flyer</span></div>';}}
-const portfolioImageStyle=document.createElement('style');
-portfolioImageStyle.textContent=`
-#work .case-c .portfolio-image{padding:0!important;overflow:hidden;position:relative;min-height:340px;background:#eee}
-#work .case-c .portfolio-image img{width:100%;height:100%;min-height:340px;display:block;object-fit:cover;object-position:center;transition:transform .7s cubic-bezier(.2,.8,.2,1),filter .5s ease}
-#work .case-c:hover .portfolio-image img{transform:scale(1.045);filter:saturate(1.04)}
-.portfolio-image-label{position:absolute;left:16px;right:16px;bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 13px;border:1px solid rgba(255,255,255,.35);background:rgba(15,18,17,.72);backdrop-filter:blur(10px);color:#fff;border-radius:10px;opacity:0;transform:translateY(8px);transition:.35s ease}
-#work .case-c:hover .portfolio-image-label{opacity:1;transform:translateY(0)}
-.portfolio-image-label small{font:700 8px/1 'DM Sans',sans-serif;letter-spacing:1.4px}
-.portfolio-image-label span{font:500 10px/1.2 'DM Sans',sans-serif;color:#e8e5dd}
-@media(max-width:650px){#work .case-c .portfolio-image,#work .case-c .portfolio-image img{min-height:300px}.portfolio-image-label{opacity:1;transform:none;left:10px;right:10px;bottom:10px}.portfolio-image-label span{font-size:9px}}
-`;
-document.head.appendChild(portfolioImageStyle);
+
+const videoCard=document.querySelector('#work .case:nth-child(8)');
+if(videoCard){
+ const placeholder=videoCard.querySelector('.placeholder');
+ if(placeholder){
+  placeholder.classList.add('portfolio-video');
+  placeholder.innerHTML='<video src="assets/Bashundhara%20Night%20Delivery%20A-Z.mp4" muted loop playsinline preload="metadata"></video><div class="portfolio-video-label"><small>08 · VIDEO / MOTION</small><span>Bashundhara Night Delivery</span></div>';
+  const v=placeholder.querySelector('video');
+  if(v){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)v.play().catch(()=>{});else v.pause()}),{threshold:.35});io.observe(videoCard);}
+ }
+}
