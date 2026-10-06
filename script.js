@@ -48,3 +48,13 @@ if(videoCard){
   if(v){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)v.play().catch(()=>{});else v.pause()}),{threshold:.35});io.observe(videoCard);}
  }
 }
+
+// Verified portfolio video: play only while visible.
+const workVideo=document.querySelector('#work .case:nth-child(4) video');
+if(workVideo){
+  const playVideo=()=>workVideo.play().catch(()=>{});
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const videoObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)playVideo();else workVideo.pause()}),{threshold:.35});
+    videoObserver.observe(workVideo);
+  }
+}
