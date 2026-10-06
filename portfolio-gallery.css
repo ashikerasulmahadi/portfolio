@@ -5,14 +5,12 @@
 /* 02 — Universe Pet Care cover / brand */
 #work .case:nth-child(2) .placeholder{background-image:url('assets/UNIVERSE%20PET%20CARE%20Cover%20Logo.jpg')!important;background-size:cover!important;background-position:center!important}
 /* 03 — CHOIX flyer */
-#work .case:nth-child(3) .placeholder{background-image:url('assets/flyer-choix.jpg')!important;background-size:contain!important;background-repeat:no-repeat!important;background-position:center!important;background-color:#e9e5dc!important}
-#work .case:nth-child(3) .placeholder:after{content:'CHOIX INTERNATIONAL  ·  FLYER DESIGN';position:absolute;left:16px;bottom:16px;padding:8px 11px;background:rgba(18,20,19,.72);color:#fff;font:600 9px/1 'Space Grotesk',sans-serif;letter-spacing:1.1px;border-radius:2px;backdrop-filter:blur(6px)}
 /* 04 — Poster slot uses the uploaded digital promotional asset when available */
-#work .case:nth-child(4) .placeholder{background-image:url('assets/HTML%20Email%20Signature%20Professional-01.jpg')!important;background-size:contain!important;background-repeat:no-repeat!important;background-position:center!important;background-color:#fff!important}
+#work .case:nth-child(4) .placeholder{background-image:url('assets/HTML%20Email%20Signature%20Profational-01.jpg')!important;background-size:contain!important;background-repeat:no-repeat!important;background-position:center!important;background-color:#fff!important}
 /* 07 — social / digital cover */
 #work .case:nth-child(7) .placeholder{background-image:url('assets/UNIVERSE%20PET%20CARE%20Cover%20Logo.jpg')!important;background-size:cover!important;background-position:center!important}
 /* 10 — business materials / email signature */
-#work .case:nth-child(10) .placeholder{background-image:url('assets/HTML%20Email%20Signature%20Professional-01.jpg')!important;background-size:contain!important;background-repeat:no-repeat!important;background-position:center!important;background-color:#fff!important}
+#work .case:nth-child(10) .placeholder{background-image:url('assets/HTML%20Email%20Signature%20Profational-01.jpg')!important;background-size:contain!important;background-repeat:no-repeat!important;background-position:center!important;background-color:#fff!important}
 #work .case:nth-child(1) .placeholder>*,#work .case:nth-child(2) .placeholder>*,#work .case:nth-child(3) .placeholder>*,#work .case:nth-child(4) .placeholder>*,#work .case:nth-child(7) .placeholder>*,#work .case:nth-child(10) .placeholder>*{opacity:0!important}
 #work .case:nth-child(1) .placeholder:after{content:'UNIVERSE PET CARE · LOGO DESIGN';color:#fff;position:absolute;left:16px;bottom:16px;padding:8px 11px;background:rgba(18,20,19,.72);font:600 9px/1 'Space Grotesk',sans-serif;letter-spacing:1.1px;border-radius:2px;backdrop-filter:blur(6px)}
 #work .case:nth-child(2) .placeholder:after{content:'UNIVERSE PET CARE · BRAND / COVER';color:#fff;position:absolute;left:16px;bottom:16px;padding:8px 11px;background:rgba(18,20,19,.72);font:600 9px/1 'Space Grotesk',sans-serif;letter-spacing:1.1px;border-radius:2px;backdrop-filter:blur(6px)}
@@ -22,3 +20,11 @@
 #work .case .placeholder{transition:transform .5s cubic-bezier(.2,.7,.2,1),filter .5s ease!important}
 #work .case:hover .placeholder{transform:scale(1.012)!important;filter:saturate(1.04)!important}
 @media(max-width:650px){#work .case:nth-child(1) .placeholder:after,#work .case:nth-child(2) .placeholder:after,#work .case:nth-child(3) .placeholder:after,#work .case:nth-child(4) .placeholder:after,#work .case:nth-child(7) .placeholder:after,#work .case:nth-child(10) .placeholder:after{left:10px;right:10px;bottom:10px;font-size:7px;letter-spacing:1px;text-align:center}}
+
+#work .case:nth-child(8) .portfolio-video{padding:0!important;position:relative;overflow:hidden!important;background:#111!important;min-height:340px}
+#work .case:nth-child(8) .portfolio-video video{width:100%;height:100%;min-height:340px;display:block;object-fit:cover;transition:transform .7s ease,filter .5s ease}
+#work .case:nth-child(8):hover .portfolio-video video{transform:scale(1.035);filter:saturate(1.05)}
+.portfolio-video-label{position:absolute;left:16px;right:16px;bottom:16px;display:flex;justify-content:space-between;gap:12px;padding:11px 13px;background:rgba(15,18,17,.72);backdrop-filter:blur(10px);color:#fff;border-radius:10px}
+.portfolio-video-label small{font:700 8px/1 'DM Sans',sans-serif;letter-spacing:1.4px}
+.portfolio-video-label span{font:500 10px/1.2 'DM Sans',sans-serif;color:#e8e5dd}
+@media(max-width:650px){#work .case:nth-child(8) .portfolio-video,#work .case:nth-child(8) .portfolio-video video{min-height:300px}.portfolio-video-label{left:10px;right:10px;bottom:10px}.portfolio-video-label span{font-size:9px}}
