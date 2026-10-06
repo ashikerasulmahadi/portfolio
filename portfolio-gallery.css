@@ -28,3 +28,19 @@
 .portfolio-video-label small{font:700 8px/1 'DM Sans',sans-serif;letter-spacing:1.4px}
 .portfolio-video-label span{font:500 10px/1.2 'DM Sans',sans-serif;color:#e8e5dd}
 @media(max-width:650px){#work .case:nth-child(8) .portfolio-video,#work .case:nth-child(8) .portfolio-video video{min-height:300px}.portfolio-video-label{left:10px;right:10px;bottom:10px}.portfolio-video-label span{font-size:9px}}
+
+/* Verified-work presentation v2 */
+#work .case .real-project{padding:0!important;min-height:340px;position:relative;overflow:hidden!important;background:#eee!important;display:block}
+#work .case .real-project img{display:block!important;opacity:1!important;width:100%!important;height:100%!important;min-height:340px;object-fit:cover;transition:transform .6s ease,filter .45s ease}
+#work .case .real-project.light{background:#fff!important}
+#work .case .real-project.light img{object-fit:contain;padding:18px}
+#work .case:hover .real-project img{transform:scale(1.025);filter:saturate(1.03)}
+#work .case .real-project.video-project{background:#101312!important}
+#work .case .real-project.video-project video{display:block!important;opacity:1!important;width:100%!important;height:100%!important;min-height:340px;object-fit:cover}
+#work .case .video-overlay{position:absolute;left:14px;right:14px;bottom:14px;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 12px;border-radius:9px;background:rgba(15,18,17,.76);backdrop-filter:blur(8px);color:#fff;z-index:2}
+#work .case .video-overlay small{font:700 8px/1 'DM Sans',sans-serif;letter-spacing:1.4px}
+#work .case .video-overlay strong{font:500 10px/1.2 'DM Sans',sans-serif}
+#work .case:nth-child(1) .real-project:after,#work .case:nth-child(2) .real-project:after,#work .case:nth-child(4) .real-project:after{content:none!important}
+#work .case:nth-child(4) .real-project>*{opacity:1!important}
+.work-proof-note{margin:26px 0 0;color:#777;font-size:11px;line-height:1.6;border-left:2px solid #b18a55;padding-left:14px}
+@media(max-width:650px){#work .case .real-project,#work .case .real-project img,#work .case .real-project.video-project video{min-height:300px}.work-proof-note{font-size:10px}.video-overlay{left:10px!important;right:10px!important;bottom:10px!important}.video-overlay strong{font-size:9px!important}}
