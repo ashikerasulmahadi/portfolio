@@ -1,65 +1,28 @@
-/* Uploaded work gallery — professional portfolio mapping */
+/* Portfolio gallery — clean current system */
 #work .case .placeholder{position:relative;overflow:hidden!important;background-size:cover!important;background-position:center!important}
-/* 01 — Universe Pet Care logo */
-#work .case:nth-child(1) .placeholder{background-image:url('assets/UNIVERSE%20PET%20CARE%20Logo.jpg')!important;background-size:contain!important;background-repeat:no-repeat!important;background-position:center!important;background-color:#fff!important}
-/* 02 — Universe Pet Care cover / brand */
-#work .case:nth-child(2) .placeholder{background-image:url('assets/UNIVERSE%20PET%20CARE%20Cover%20Logo.jpg')!important;background-size:cover!important;background-position:center!important}
-/* 03 — CHOIX flyer */
-/* 04 — Poster slot uses the uploaded digital promotional asset when available */
-#work .case:nth-child(4) .placeholder{background-image:url('assets/HTML%20Email%20Signature%20Profational-01.jpg')!important;background-size:contain!important;background-repeat:no-repeat!important;background-position:center!important;background-color:#fff!important}
-/* 07 — social / digital cover */
-#work .case:nth-child(7) .placeholder{background-image:url('assets/UNIVERSE%20PET%20CARE%20Cover%20Logo.jpg')!important;background-size:cover!important;background-position:center!important}
-/* 10 — business materials / email signature */
-#work .case:nth-child(10) .placeholder{background-image:url('assets/HTML%20Email%20Signature%20Profational-01.jpg')!important;background-size:contain!important;background-repeat:no-repeat!important;background-position:center!important;background-color:#fff!important}
-#work .case:nth-child(1) .placeholder>*,#work .case:nth-child(2) .placeholder>*,#work .case:nth-child(3) .placeholder>*,#work .case:nth-child(4) .placeholder>*,#work .case:nth-child(7) .placeholder>*,#work .case:nth-child(10) .placeholder>*{opacity:0!important}
-#work .case:nth-child(1) .placeholder:after{content:'UNIVERSE PET CARE · LOGO DESIGN';color:#fff;position:absolute;left:16px;bottom:16px;padding:8px 11px;background:rgba(18,20,19,.72);font:600 9px/1 'Space Grotesk',sans-serif;letter-spacing:1.1px;border-radius:2px;backdrop-filter:blur(6px)}
-#work .case:nth-child(2) .placeholder:after{content:'UNIVERSE PET CARE · BRAND / COVER';color:#fff;position:absolute;left:16px;bottom:16px;padding:8px 11px;background:rgba(18,20,19,.72);font:600 9px/1 'Space Grotesk',sans-serif;letter-spacing:1.1px;border-radius:2px;backdrop-filter:blur(6px)}
-#work .case:nth-child(4) .placeholder:after{content:'DIGITAL DESIGN · EMAIL SIGNATURE';color:#fff;position:absolute;left:16px;bottom:16px;padding:8px 11px;background:rgba(18,20,19,.72);font:600 9px/1 'Space Grotesk',sans-serif;letter-spacing:1.1px;border-radius:2px;backdrop-filter:blur(6px)}
-#work .case:nth-child(7) .placeholder:after{content:'UNIVERSE PET CARE · SOCIAL / COVER';color:#fff;position:absolute;left:16px;bottom:16px;padding:8px 11px;background:rgba(18,20,19,.72);font:600 9px/1 'Space Grotesk',sans-serif;letter-spacing:1.1px;border-radius:2px;backdrop-filter:blur(6px)}
-#work .case:nth-child(10) .placeholder:after{content:'EMAIL SIGNATURE · BUSINESS MATERIAL';color:#fff;position:absolute;left:16px;bottom:16px;padding:8px 11px;background:rgba(18,20,19,.72);font:600 9px/1 'Space Grotesk',sans-serif;letter-spacing:1.1px;border-radius:2px;backdrop-filter:blur(6px)}
-#work .case .placeholder{transition:transform .5s cubic-bezier(.2,.7,.2,1),filter .5s ease!important}
-#work .case:hover .placeholder{transform:scale(1.012)!important;filter:saturate(1.04)!important}
-@media(max-width:650px){#work .case:nth-child(1) .placeholder:after,#work .case:nth-child(2) .placeholder:after,#work .case:nth-child(3) .placeholder:after,#work .case:nth-child(4) .placeholder:after,#work .case:nth-child(7) .placeholder:after,#work .case:nth-child(10) .placeholder:after{left:10px;right:10px;bottom:10px;font-size:7px;letter-spacing:1px;text-align:center}}
-
-#work .case:nth-child(8) .portfolio-video{padding:0!important;position:relative;overflow:hidden!important;background:#111!important;min-height:340px}
-#work .case:nth-child(8) .portfolio-video video{width:100%;height:100%;min-height:340px;display:block;object-fit:cover;transition:transform .7s ease,filter .5s ease}
-#work .case:nth-child(8):hover .portfolio-video video{transform:scale(1.035);filter:saturate(1.05)}
-.portfolio-video-label{position:absolute;left:16px;right:16px;bottom:16px;display:flex;justify-content:space-between;gap:12px;padding:11px 13px;background:rgba(15,18,17,.72);backdrop-filter:blur(10px);color:#fff;border-radius:10px}
-.portfolio-video-label small{font:700 8px/1 'DM Sans',sans-serif;letter-spacing:1.4px}
-.portfolio-video-label span{font:500 10px/1.2 'DM Sans',sans-serif;color:#e8e5dd}
-@media(max-width:650px){#work .case:nth-child(8) .portfolio-video,#work .case:nth-child(8) .portfolio-video video{min-height:300px}.portfolio-video-label{left:10px;right:10px;bottom:10px}.portfolio-video-label span{font-size:9px}}
-
-/* Verified-work presentation v2 */
 #work .case .real-project{padding:0!important;min-height:340px;position:relative;overflow:hidden!important;background:#eee!important;display:block}
-#work .case .real-project img{display:block!important;opacity:1!important;width:100%!important;height:100%!important;min-height:340px;object-fit:cover;transition:transform .6s ease,filter .45s ease}
+#work .case .real-project img{display:block!important;opacity:1!important;visibility:visible!important;width:100%!important;height:100%!important;min-height:340px;object-fit:cover;position:relative;z-index:2;transition:transform .6s ease,filter .45s ease}
 #work .case .real-project.light{background:#fff!important}
-#work .case .real-project.light img{object-fit:contain;padding:18px}
-#work .case:hover .real-project img{transform:scale(1.025);filter:saturate(1.03)}
+#work .case .real-project.light img{object-fit:contain!important;padding:18px;background:#fff!important}
 #work .case .real-project.video-project{background:#101312!important}
-#work .case .real-project.video-project video{display:block!important;opacity:1!important;width:100%!important;height:100%!important;min-height:340px;object-fit:cover}
-#work .case .video-overlay{position:absolute;left:14px;right:14px;bottom:14px;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 12px;border-radius:9px;background:rgba(15,18,17,.76);backdrop-filter:blur(8px);color:#fff;z-index:2}
+#work .case .video-overlay{position:absolute;left:14px;right:14px;bottom:14px;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 12px;border-radius:9px;background:rgba(15,18,17,.76);backdrop-filter:blur(8px);color:#fff;z-index:3}
 #work .case .video-overlay small{font:700 8px/1 'DM Sans',sans-serif;letter-spacing:1.4px}
 #work .case .video-overlay strong{font:500 10px/1.2 'DM Sans',sans-serif}
-#work .case:nth-child(1) .real-project:after,#work .case:nth-child(2) .real-project:after,#work .case:nth-child(4) .real-project:after{content:none!important}
-#work .case:nth-child(4) .real-project>*{opacity:1!important}
+#work .case:hover .real-project img{transform:scale(1.025);filter:saturate(1.03)}
 .work-proof-note{margin:26px 0 0;color:#777;font-size:11px;line-height:1.6;border-left:2px solid #b18a55;padding-left:14px}
-@media(max-width:650px){#work .case .real-project,#work .case .real-project img,#work .case .real-project.video-project video{min-height:300px}.work-proof-note{font-size:10px}.video-overlay{left:10px!important;right:10px!important;bottom:10px!important}.video-overlay strong{font-size:9px!important}}
-
-
-/* FINAL DEMO ARTWORK VISIBILITY FIX — current 4-card portfolio */
-#work .case:nth-child(1) .real-project > img,
-#work .case:nth-child(2) .real-project > img,
-#work .case:nth-child(3) .real-project > img,
-#work .case:nth-child(4) .real-project > img{
-  opacity:1!important;
-  visibility:visible!important;
-  display:block!important;
-  width:100%!important;
-  height:100%!important;
-  object-fit:cover!important;
-  position:relative!important;
-  z-index:2!important;
-}
-#work .case:nth-child(1) .real-project > img{object-fit:contain!important;background:#fff!important}
-#work .case:nth-child(3) .real-project > img{object-fit:contain!important;background:#fff!important}
-#work .case:nth-child(4) .real-project > img{object-fit:cover!important}
+.demo-gallery{margin-top:70px}
+.demo-gallery-head{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:end;margin-bottom:26px}
+.demo-gallery-head h3{margin:0;font-size:clamp(30px,4vw,54px);line-height:.98;letter-spacing:-.035em}
+.demo-gallery-head h3 span{color:#777}
+.demo-gallery-head>p{margin:0;max-width:480px;color:#777;font-size:13px;line-height:1.7}
+.demo-gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.demo-card{background:#fff;border:1px solid rgba(20,25,23,.1);overflow:hidden;box-shadow:0 10px 30px rgba(20,25,23,.06);transition:transform .35s ease,box-shadow .35s ease}
+.demo-card:hover{transform:translateY(-5px);box-shadow:0 18px 42px rgba(20,25,23,.11)}
+.demo-art{aspect-ratio:1.38/1;overflow:hidden;background:#eee}
+.demo-art svg{display:block;width:100%;height:100%;transition:transform .55s ease}
+.demo-card:hover .demo-art svg{transform:scale(1.025)}
+.demo-card>div:last-child{padding:15px 16px 17px;display:grid;gap:6px}
+.demo-card small{font:700 8px/1 'DM Sans',sans-serif;letter-spacing:1.5px;color:#888}
+.demo-card strong{font:600 15px/1.2 'Space Grotesk',sans-serif;color:#18231f}
+@media(max-width:900px){.demo-gallery-head{grid-template-columns:1fr}.demo-gallery-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){#work .case .real-project,#work .case .real-project img{min-height:300px}.work-proof-note{font-size:10px}.demo-gallery{margin-top:50px}.demo-gallery-grid{grid-template-columns:1fr}.demo-gallery-head>p{font-size:11px}.demo-card>div:last-child{padding:12px 13px 14px}}
