@@ -18,10 +18,10 @@ document.head.appendChild(experienceStyle);
 
 
 const projectDetails=[
- {title:'Logo Design',role:'Logo & Identity Design',tools:'Adobe Illustrator · Adobe Photoshop',deliverables:'Logo concepts · Identity direction · Final brand mark',note:'Focused on clear, memorable visual identity and practical brand use.'},
- {title:'Brand Identity',role:'Brand Identity Design',tools:'Adobe Illustrator · Adobe Photoshop',deliverables:'Logo · Visual direction · Brand applications',note:'Built around consistency across customer-facing brand materials.'},
- {title:'Flyer Design',role:'Promotional Print Design',tools:'Adobe Photoshop · Adobe Illustrator',deliverables:'Flyer layout · Promotional messaging · Print-ready artwork',note:'Designed to communicate offers and information quickly in a print-friendly format.'},
- {title:'Poster Design',role:'Campaign & Poster Design',tools:'Adobe Photoshop · Adobe Illustrator',deliverables:'Poster composition · Typography · Campaign artwork',note:'Visual hierarchy and attention-first composition for promotional communication.'},
+ {title:'Universe Pet Care — Logo Design',role:'Logo & Identity Design',tools:'Adobe Illustrator · Adobe Photoshop',deliverables:'Logo concept · Final brand mark · Identity direction',note:'A friendly, memorable identity designed for practical brand use across customer-facing materials.'},
+ {title:'Universe Pet Care — Brand Cover',role:'Brand Identity & Marketing Design',tools:'Adobe Photoshop · Adobe Illustrator',deliverables:'Branded cover · Visual composition · Marketing artwork',note:'Extended the identity into a clear promotional visual while keeping the brand recognizable and consistent.'},
+ {title:'Professional Email Signature',role:'Business Identity Design',tools:'Adobe Photoshop · Adobe Illustrator',deliverables:'Email signature artwork · Contact hierarchy · Digital-ready visual',note:'Designed a clean professional signature system for consistent business communication.'},
+ {title:'Bashundhara Night Delivery',role:'Video & Promotional Motion',tools:'Video editing · Graphic design',deliverables:'Promotional video · Motion graphics · Campaign visual',note:'Combined graphic design and video editing to communicate a real promotional message.'},
  {title:'Promotional Poster',role:'Marketing Creative',tools:'Adobe Photoshop · Adobe Illustrator',deliverables:'Offer creative · Product emphasis · Promotional artwork',note:'Created with a commercial focus: clear message, strong visual impact and brand alignment.'},
  {title:'Product Poster',role:'Product Marketing Design',tools:'Adobe Photoshop · Adobe Illustrator',deliverables:'Product visual · Promotional composition · Advertising artwork',note:'Product-focused visual communication for online and offline promotion.'},
  {title:'Social Media Design',role:'Social & Digital Creative',tools:'Adobe Photoshop · Adobe Illustrator',deliverables:'Facebook posts · Campaign graphics · Digital creatives',note:'Designed for attention, clarity and campaign consistency across social content.'},
@@ -31,6 +31,26 @@ const projectDetails=[
  {title:'Brochure & Catalog',role:'Editorial & Marketing Design',tools:'Adobe InDesign-style layout thinking · Illustrator · Photoshop',deliverables:'Page layout · Product presentation · Marketing material',note:'Structured information and visuals for clear product or company communication.'},
  {title:'Marketing Creative',role:'Campaign & Advertising Design',tools:'Adobe Photoshop · Adobe Illustrator',deliverables:'Campaign graphics · Ads · Promotional content',note:'Commercial visuals developed around the communication goal and campaign message.'}
 ];
+const workGrid=document.querySelector('#work .work-grid');
+if(workGrid){
+  workGrid.innerHTML=`
+    <article class="case" data-project="universe-logo">
+      <div class="placeholder real-project light"><img src="assets/UNIVERSE%20PET%20CARE%20Logo.jpg" alt="Universe Pet Care logo design"></div>
+      <div class="case-info"><small>01 · BRANDING</small><h3>Universe Pet Care — Logo Design</h3><p>Logo design focused on a friendly, trustworthy and practical brand identity.</p></div>
+    </article>
+    <article class="case" data-project="universe-cover">
+      <div class="placeholder real-project light"><img src="assets/UNIVERSE%20PET%20CARE%20Cover%20Logo.jpg" alt="Universe Pet Care brand cover design"></div>
+      <div class="case-info"><small>02 · BRAND IDENTITY</small><h3>Universe Pet Care — Brand Cover</h3><p>Branded cover artwork extending the identity into customer-facing marketing communication.</p></div>
+    </article>
+    <article class="case" data-project="email-signature">
+      <div class="placeholder real-project light"><img src="assets/HTML%20Email%20Signature%20Profational-01.jpg" alt="HTML email signature design"></div>
+      <div class="case-info"><small>03 · BUSINESS MATERIAL</small><h3>Professional Email Signature</h3><p>Clean digital identity material designed for professional communication and brand consistency.</p></div>
+    </article>
+    <article class="case" data-project="night-delivery">
+      <div class="placeholder real-project video-project"><video src="assets/Bashundhara%20Night%20Delivery%20A-Z.mp4" muted loop playsinline preload="metadata"></video><div class="video-overlay"><small>04 · VIDEO / MOTION</small><strong>Bashundhara Night Delivery</strong></div></div>
+      <div class="case-info"><small>04 · VIDEO / MOTION</small><h3>Bashundhara Night Delivery</h3><p>Promotional motion content combining visual communication with real campaign delivery.</p></div>
+    </article>`;
+}
 const workCards=document.querySelectorAll('#work .case');
 workCards.forEach((card,i)=>{const d=projectDetails[i];if(!d)return;const info=document.createElement('div');info.className='project-details';info.innerHTML='<div class="project-details-grid"><div><small>MY ROLE</small><strong>'+d.role+'</strong></div><div><small>TOOLS</small><strong>'+d.tools+'</strong></div><div><small>DELIVERABLES</small><strong>'+d.deliverables+'</strong></div></div><p>'+d.note+'</p>';card.appendChild(info);card.addEventListener('click',e=>{if(e.target.closest('a,button'))return;workCards.forEach(other=>{if(other!==card)other.classList.remove('project-open')});card.classList.toggle('project-open')});});
 const projectStyle=document.createElement('style');projectStyle.textContent=`
