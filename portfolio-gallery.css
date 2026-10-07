@@ -44,3 +44,22 @@
 #work .case:nth-child(4) .real-project>*{opacity:1!important}
 .work-proof-note{margin:26px 0 0;color:#777;font-size:11px;line-height:1.6;border-left:2px solid #b18a55;padding-left:14px}
 @media(max-width:650px){#work .case .real-project,#work .case .real-project img,#work .case .real-project.video-project video{min-height:300px}.work-proof-note{font-size:10px}.video-overlay{left:10px!important;right:10px!important;bottom:10px!important}.video-overlay strong{font-size:9px!important}}
+
+
+/* FINAL DEMO ARTWORK VISIBILITY FIX — current 4-card portfolio */
+#work .case:nth-child(1) .real-project > img,
+#work .case:nth-child(2) .real-project > img,
+#work .case:nth-child(3) .real-project > img,
+#work .case:nth-child(4) .real-project > img{
+  opacity:1!important;
+  visibility:visible!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  position:relative!important;
+  z-index:2!important;
+}
+#work .case:nth-child(1) .real-project > img{object-fit:contain!important;background:#fff!important}
+#work .case:nth-child(3) .real-project > img{object-fit:contain!important;background:#fff!important}
+#work .case:nth-child(4) .real-project > img{object-fit:cover!important}
