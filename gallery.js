@@ -13,7 +13,7 @@
     const makeItems = (card) => {
       const title = card.querySelector('strong')?.textContent?.trim() || 'Design Work';
       const slug = title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-      const fallback = card.querySelector('.demo-art')?.innerHTML || '';
+      const fallback = '<div class="gallery-empty-slot"><span>UPLOAD IMAGE</span><small>Replace this slot in assets/gallery</small></div>';
       return Array.from({length:8}, (_,i) => ({
         title, fallback,
         src: ['assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.jpg','assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.jpeg','assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.png','assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.webp']
