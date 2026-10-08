@@ -16,7 +16,7 @@
       const fallback = card.querySelector('.demo-art')?.innerHTML || '';
       return Array.from({length:8}, (_,i) => ({
         title, fallback,
-        src: 'assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.jpg'
+        src: ['assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.jpg','assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.jpeg','assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.png','assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.webp']
       }));
     };
 
@@ -28,7 +28,9 @@
       const img = new Image();
       img.alt = item.title + ' image ' + (index + 1);
       img.onload = () => { main.innerHTML=''; main.appendChild(img); };
-      img.src = item.src;
+      let extIndex = 0;
+      img.onerror = () => { extIndex++; if (extIndex < item.src.length) img.src = item.src[extIndex]; };
+      img.src = item.src[0];
       counter.textContent = String(index+1).padStart(2,'0') + ' / 08';
       thumbs.querySelectorAll('.gallery-thumb').forEach((b,i)=>b.classList.toggle('active',i===index));
     };
@@ -42,8 +44,10 @@
       items.forEach((item,i)=>{
         const b=document.createElement('button');
         b.type='button'; b.className='gallery-thumb';
-        const img=document.createElement('img'); img.alt=''; img.src=item.src;
-        img.onerror=()=>{b.innerHTML=item.fallback;};
+        const img=document.createElement('img'); img.alt='';
+        let extIndex = 0;
+        img.onerror=()=>{ extIndex++; if (extIndex < item.src.length) img.src=item.src[extIndex]; else b.innerHTML=item.fallback; };
+        img.src=item.src[0];
         b.appendChild(img);
         b.addEventListener('click',()=>show(i));
         thumbs.appendChild(b);
