@@ -16,7 +16,7 @@
       const fallback = '<div class="gallery-empty-slot"><span>UPLOAD IMAGE</span><small>Replace this slot in assets/gallery</small></div>';
       return Array.from({length:8}, (_,i) => ({
         title, fallback,
-        src: ['assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.jpg','assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.jpeg','assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.png','assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.webp']
+        src: ['https://ashikerasulmahadi.github.io/portfolio/assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.jpg','https://ashikerasulmahadi.github.io/portfolio/assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.jpeg','https://ashikerasulmahadi.github.io/portfolio/assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.png','https://ashikerasulmahadi.github.io/portfolio/assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.webp']
       }));
     };
 
