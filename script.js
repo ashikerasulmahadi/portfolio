@@ -58,3 +58,94 @@ if(workVideo){
     videoObserver.observe(workVideo);
   }
 }
+
+// PORTFOLIO PICTURE GALLERY
+(() => {
+  const modal = document.querySelector('#portfolioGallery');
+  const mainArt = document.querySelector('#galleryMainArt');
+  const thumbs = document.querySelector('#galleryThumbs');
+  const counter = document.querySelector('#galleryCounter');
+  if (!modal || !mainArt || !thumbs) return;
+
+  const sourceCards = [...document.querySelectorAll('.demo-card')];
+  const galleryItems = sourceCards.slice(0, 6).map((card, i) => ({
+    title: card.querySelector('strong')?.textContent || 'Design Work',
+    type: card.querySelector('small')?.textContent || ('0' + (i + 1)),
+    html: card.querySelector('.demo-art')?.innerHTML || ''
+  }));
+  galleryItems.push(
+    {title:'Universe Pet Care Logo', type:'07 · BRANDING', src:'assets/UNIVERSE%20PET%20CARE%20Logo.jpg'},
+    {title:'Professional Email Signature', type:'08 · BUSINESS IDENTITY', src:'assets/HTML%20Email%20Signature%20Profational-01.jpg'}
+  );
+
+  let current = 0;
+  const render = (index) => {
+    current = (index + galleryItems.length) % galleryItems.length;
+    const item = galleryItems[current];
+    mainArt.innerHTML = item.html ? item.html : '<img src="'+item.src+'" alt="'+item.title+'">';
+    counter.textContent = String(current + 1).padStart(2,'0') + ' / ' + String(galleryItems.length).padStart(2,'0');
+    thumbs.querySelectorAll('button').forEach((b,i)=>b.classList.toggle('active',i===current));
+  };
+  const open = (index=0) => {
+    render(index);
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('gallery-open');
+  };
+  const close = () => {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('gallery-open');
+  };
+
+  galleryItems.forEach((item,i) => {
+    const b=document.createElement('button');
+    b.type='button';
+    b.className='gallery-thumb';
+    b.setAttribute('aria-label','Open '+item.title);
+    b.innerHTML=item.html || '<img src="'+item.src+'" alt="">';
+    b.addEventListener('click',()=>render(i));
+    thumbs.appendChild(b);
+  });
+
+  sourceCards.forEach((card,i)=>card.addEventListener('click',e=>{
+    if(e.target.closest('a,button')) return;
+    open(i);
+  }));
+  document.querySelectorAll('[data-gallery-close]').forEach(el=>el.addEventListener('click',close));
+  document.querySelector('.gallery-prev')?.addEventListener('click',()=>render(current-1));
+  document.querySelector('.gallery-next')?.addEventListener('click',()=>render(current+1));
+  document.addEventListener('keydown',e=>{
+    if(!modal.classList.contains('is-open')) return;
+    if(e.key==='Escape') close();
+    if(e.key==='ArrowLeft') render(current-1);
+    if(e.key==='ArrowRight') render(current+1);
+  });
+
+  const style=document.createElement('style');
+  style.textContent=`
+  body.gallery-open{overflow:hidden}
+  .portfolio-gallery-modal{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:22px}
+  .portfolio-gallery-modal.is-open{display:flex}
+  .gallery-backdrop{position:absolute;inset:0;background:rgba(10,14,13,.88);backdrop-filter:blur(10px)}
+  .gallery-panel{position:relative;width:min(1180px,96vw);max-height:94vh;background:#f7f4ed;border:1px solid rgba(255,255,255,.15);border-radius:24px;padding:22px;box-shadow:0 35px 100px rgba(0,0,0,.4);display:flex;flex-direction:column;gap:15px}
+  .gallery-close{position:absolute;right:15px;top:12px;width:42px;height:42px;border:0;border-radius:50%;background:#17201e;color:#fff;font-size:28px;line-height:1;cursor:pointer;z-index:3}
+  .gallery-top{display:flex;justify-content:space-between;align-items:flex-end;padding-right:55px}
+  .gallery-top small{display:block;font-size:8px;letter-spacing:2px;color:#a57a43;font-weight:700;margin-bottom:6px}
+  .gallery-top strong{font-family:'Space Grotesk';font-size:25px}
+  .gallery-top span{font-size:10px;letter-spacing:1.5px;color:#777}
+  .gallery-main{display:grid;grid-template-columns:48px 1fr 48px;align-items:center;gap:12px;min-height:0}
+  .gallery-main-art{height:min(62vh,650px);display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:18px;background:#ebe6dc}
+  .gallery-main-art svg,.gallery-main-art img{width:100%;height:100%;object-fit:contain;display:block}
+  .gallery-nav{width:44px;height:44px;border-radius:50%;border:1px solid #d2cabd;background:#fff;color:#17201e;font-size:34px;line-height:1;cursor:pointer}
+  .gallery-nav:hover{background:#17201e;color:#fff}
+  .gallery-thumbs{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;overflow:auto;padding-bottom:2px}
+  .gallery-thumb{height:74px;border:1px solid #d7d0c4;background:#ebe6dc;border-radius:10px;overflow:hidden;padding:0;cursor:pointer;opacity:.62;transition:.2s}
+  .gallery-thumb.active{opacity:1;border:2px solid #a57a43}
+  .gallery-thumb svg,.gallery-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .demo-card{cursor:pointer}
+  @media(max-width:700px){
+    .portfolio-gallery-modal{padding:10px}.gallery-panel{padding:13px;border-radius:17px}.gallery-main{grid-template-columns:34px 1fr 34px;gap:6px}.gallery-main-art{height:55vh}.gallery-nav{width:34px;height:34px;font-size:27px}.gallery-thumbs{grid-template-columns:repeat(4,1fr)}.gallery-thumb{height:60px}.gallery-top strong{font-size:20px}.gallery-top span{font-size:8px}
+  }`;
+  document.head.appendChild(style);
+})();
