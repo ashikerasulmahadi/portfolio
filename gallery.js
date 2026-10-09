@@ -14,10 +14,17 @@
       const title = card.querySelector('strong')?.textContent?.trim() || 'Design Work';
       const slug = title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
       const fallback = '<div class="gallery-empty-slot"><span>UPLOAD IMAGE</span><small>Replace this slot in assets/gallery</small></div>';
-      return Array.from({length:8}, (_,i) => ({
-        title, fallback,
-        src: ['https://ashikerasulmahadi.github.io/portfolio/assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.jpg','https://ashikerasulmahadi.github.io/portfolio/assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.jpeg','https://ashikerasulmahadi.github.io/portfolio/assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.png','https://ashikerasulmahadi.github.io/portfolio/assets/gallery/' + slug + '-' + String(i+1).padStart(2,'0') + '.webp']
-      }));
+      return Array.from({length:8}, (_,i) => {
+        const number = String(i+1).padStart(2,'0');
+        const base = 'https://ashikerasulmahadi.github.io/portfolio/assets/gallery/';
+        const extensions = ['.jpg','.jpeg','.png','.webp'];
+        const sources = extensions.map(ext => base + slug + '-' + number + ext);
+        // Accept the earlier uploaded "dentity-direction" spelling as well.
+        if (slug === 'identity-direction') {
+          extensions.forEach(ext => sources.push(base + 'dentity-direction-' + number + ext));
+        }
+        return { title, fallback, src: sources };
+      });
     };
 
     const show = (n) => {
