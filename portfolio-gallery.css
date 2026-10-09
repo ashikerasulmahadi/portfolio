@@ -52,7 +52,7 @@
 body.gallery-open{overflow:hidden}
 .portfolio-gallery-modal{position:fixed!important;inset:0!important;z-index:999999!important;display:none;align-items:center;justify-content:center;padding:22px;box-sizing:border-box}
 .portfolio-gallery-modal.is-open{display:flex!important}
-.gallery-backdrop{position:absolute;inset:0;background:rgba(10,14,13,.9);backdrop-filter:blur(10px)}
+.gallery-backdrop{position:absolute;inset:0;background:rgba(10,14,13,.10);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .gallery-panel{position:relative;width:min(1180px,96vw);max-height:94vh;background:#f7f4ed;border:1px solid rgba(255,255,255,.18);border-radius:24px;padding:22px;box-shadow:0 35px 100px rgba(0,0,0,.45);display:flex;flex-direction:column;gap:15px;box-sizing:border-box;z-index:1}
 .gallery-close{position:absolute;right:15px;top:12px;width:42px;height:42px;border:0;border-radius:50%;background:#17201e;color:#fff;font-size:28px;line-height:1;cursor:pointer;z-index:3}
 .gallery-top{display:flex;justify-content:space-between;align-items:flex-end;padding-right:55px}
