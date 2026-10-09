@@ -11,3 +11,7 @@
 /* Keep social links directly below the contact details in the right column */
 .contact-socials{grid-column:2;grid-row:2;align-self:start;margin-top:-70px}
 @media(max-width:900px){.contact-socials{grid-column:1;grid-row:auto;margin-top:0}}
+
+/* Refine contact social row spacing */
+.contact-socials{margin-top:-105px;transform:translateY(-12px)}
+@media(max-width:900px){.contact-socials{margin-top:0;transform:none}}
