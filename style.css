@@ -6,3 +6,8 @@
 .contact-socials svg{width:19px;height:19px;fill:currentColor}
 .contact-socials a:hover,.contact-socials a:focus-visible{color:#f4a340;border-color:rgba(244,163,64,.7);background:rgba(244,163,64,.08);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.12);outline:none}
 @media(max-width:600px){.contact-socials{gap:13px;margin-top:24px}.contact-socials a{width:40px;height:40px}}
+
+
+/* Keep social links directly below the contact details in the right column */
+.contact-socials{grid-column:2;grid-row:2;align-self:start;margin-top:-70px}
+@media(max-width:900px){.contact-socials{grid-column:1;grid-row:auto;margin-top:0}}
