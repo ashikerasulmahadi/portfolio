@@ -80,3 +80,13 @@ body.gallery-open{overflow:hidden}
 .gallery-thumb .gallery-empty-slot{min-height:0;font-size:7px;gap:2px}
 .gallery-thumb .gallery-empty-slot span{font-size:7px;letter-spacing:1px}
 .gallery-thumb .gallery-empty-slot small{display:none}
+
+
+/* Uploaded artwork gently auto-slides inside each selected-work card */
+.demo-art{position:relative}
+.demo-art .demo-auto-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:1;transform:scale(1);transition:opacity .22s ease,transform 3.2s ease}
+.demo-art .demo-auto-slide.is-changing{opacity:.2;transform:scale(1.025)}
+.demo-art.has-auto-slides>svg{opacity:0;visibility:hidden}
+.demo-art.has-auto-slides .demo-auto-slide{animation:demoAutoKenBurns 6.4s ease-in-out infinite alternate}
+@keyframes demoAutoKenBurns{from{transform:scale(1)}to{transform:scale(1.045)}}
+@media(prefers-reduced-motion:reduce){.demo-art .demo-auto-slide,.demo-art.has-auto-slides .demo-auto-slide{animation:none;transition:none}}
