@@ -1,11 +1,25 @@
-undefined
-/* Refined artwork width: keep the gallery centered with more breathing room */
+/* Keep portfolio artwork smaller and centered so each image feels less oversized. */
 #work .uploaded-artwork-wall {
-  width: 75% !important;
-  max-width: 100% !important;
+  width: 60% !important;
+  max-width: 900px !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
+
+#work .uploaded-artwork-item {
+  margin: 0 0 24px !important;
+}
+
+#work .uploaded-artwork-item img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
+}
+
 @media (max-width: 650px) {
-  #work .uploaded-artwork-wall { width: 90% !important; }
+  #work .uploaded-artwork-wall {
+    width: 94% !important;
+  }
 }
