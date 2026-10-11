@@ -11,8 +11,8 @@
     let index = 0;
 
 
-    // Auto-rotate each card's uploaded gallery images in its thumbnail preview.
-    // If no real image exists for a card yet, keep its built-in SVG artwork.
+    // Load uploaded card images as soon as the first valid file is found.
+    // Cards without uploaded images keep their built-in SVG preview.
     const initCardSlideshows = () => {
       cards.forEach(card => {
         const art = card.querySelector('.demo-art');
@@ -22,30 +22,26 @@
         const slug = title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
         const base = 'https://ashikerasulmahadi.github.io/portfolio/assets/gallery/';
         const extensions = ['.jpg','.jpeg','.png','.webp'];
-        const candidates = [];
-        for (let i=1;i<=8;i++) {
-          const n=String(i).padStart(2,'0');
-          extensions.forEach(ext => candidates.push(base+slug+'-'+n+ext));
-          if (slug === 'identity-direction') extensions.forEach(ext => candidates.push(base+'dentity-direction-'+n+ext));
-        }
         const loaded = [];
-        let pending = candidates.length;
-        const finish = () => {
-          if (pending !== 0 || !loaded.length || art.dataset.slideshowStarted === '1') return;
+        let nextSlot = 1;
+        let current = 0;
+        let image = null;
+        let activeProbe = false;
+        const startRotation = () => {
+          if (art.dataset.slideshowStarted === '1' || !loaded.length) return;
           art.dataset.slideshowStarted = '1';
-          loaded.sort((a,b) => Number(a.slot)-Number(b.slot));
-          const unique = [];
+          loaded.sort((a,b) => a.slot-b.slot);
           const seen = new Set();
-          loaded.forEach(item => { if (!seen.has(item.src)) { seen.add(item.src); unique.push(item); } });
-          if (!unique.length) return;
-          let current = 0;
-          const image = document.createElement('img');
-          image.className = 'demo-auto-slide';
-          image.alt = title + ' portfolio preview';
-          image.loading = 'lazy';
+          const unique = loaded.filter(item => !seen.has(item.src) && seen.add(item.src));
+          if (!image) {
+            image = document.createElement('img');
+            image.className = 'demo-auto-slide';
+            image.alt = title + ' portfolio preview';
+            image.loading = 'lazy';
+            art.appendChild(image);
+            art.classList.add('has-auto-slides');
+          }
           image.src = unique[0].src;
-          art.appendChild(image);
-          art.classList.add('has-auto-slides');
           if (unique.length > 1) {
             window.setInterval(() => {
               current = (current + 1) % unique.length;
@@ -57,12 +53,45 @@
             }, 3200);
           }
         };
-        candidates.forEach(src => {
-          const probe = new Image();
-          probe.onload = () => { loaded.push({src, slot: src.match(/-(\d{2})\.(?:jpe?g|png|webp)$/i)?.[1] || '01'}); pending--; finish(); };
-          probe.onerror = () => { pending--; finish(); };
-          probe.src = src;
-        });
+        const probeNextSlot = () => {
+          if (nextSlot > 8 || activeProbe) {
+            if (nextSlot > 8) startRotation();
+            return;
+          }
+          activeProbe = true;
+          const slot = nextSlot++;
+          const sources = extensions.map(ext => base + slug + '-' + String(slot).padStart(2,'0') + ext);
+          if (slug === 'identity-direction') extensions.forEach(ext => sources.push(base + 'dentity-direction-' + String(slot).padStart(2,'0') + ext));
+          let extensionIndex = 0;
+          const trySource = () => {
+            if (extensionIndex >= sources.length) {
+              activeProbe = false;
+              probeNextSlot();
+              return;
+            }
+            const src = sources[extensionIndex++];
+            const probe = new Image();
+            probe.onload = () => {
+              loaded.push({src,slot});
+              if (!image) {
+                image = document.createElement('img');
+                image.className = 'demo-auto-slide';
+                image.alt = title + ' portfolio preview';
+                image.loading = 'lazy';
+                image.src = src;
+                art.appendChild(image);
+                art.classList.add('has-auto-slides');
+              }
+              activeProbe = false;
+              probeNextSlot();
+              if (nextSlot > 8 && !activeProbe) startRotation();
+            };
+            probe.onerror = trySource;
+            probe.src = src;
+          };
+          trySource();
+        };
+        probeNextSlot();
       });
     };
 
