@@ -129,12 +129,7 @@
       document.body.classList.remove('gallery-open');
     };
 
-    cards.forEach(card=>card.addEventListener('click',e=>{
-      if(e.target.closest('a,button')) return;
-      e.preventDefault();
-      e.stopPropagation();
-      open(card);
-    }));
+    // Continuous image wall: cards no longer open a separate modal gallery.
     modal.querySelectorAll('[data-gallery-close]').forEach(el=>el.addEventListener('click',close));
     modal.querySelector('.gallery-prev')?.addEventListener('click',()=>show(index-1));
     modal.querySelector('.gallery-next')?.addEventListener('click',()=>show(index+1));
