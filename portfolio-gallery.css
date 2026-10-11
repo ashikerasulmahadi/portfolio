@@ -145,3 +145,9 @@ body.gallery-open{overflow:hidden}
 .demo-art svg,.demo-art img,.demo-art .demo-auto-slide{display:block!important;width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important;border-radius:0!important}
 .portfolio-step-heading{margin:38px 0 18px!important;padding-top:24px!important;border-top:1px solid rgba(255,255,255,.12)!important}
 @media(max-width:900px){.demo-gallery-grid{grid-template-columns:minmax(0,1fr)!important;gap:18px!important}}
+
+
+/* Uploaded gallery: one large uncropped image per row */
+#work .uploaded-artwork-wall{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:28px!important;margin-top:30px!important}
+#work .uploaded-artwork-item{display:block!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;overflow:visible!important}
+#work .uploaded-artwork-item img{display:block!important;width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
