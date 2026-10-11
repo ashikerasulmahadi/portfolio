@@ -123,3 +123,16 @@ body.gallery-open{overflow:hidden}
 .demo-art{overflow:hidden;position:relative}
 .demo-art svg{display:block}
 @media(max-width:900px){.demo-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+/* Artwork-only portfolio wall: remove card chrome and captions */
+.demo-gallery-head{display:none!important}
+.portfolio-step-heading{margin:28px 0 14px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12)}
+.demo-card{display:block!important;border:0!important;border-radius:0!important;padding:0!important;margin:0!important;background:transparent!important;box-shadow:none!important;overflow:hidden!important;cursor:default!important;transform:none!important}
+.demo-card:hover{box-shadow:none!important;transform:none!important}
+.demo-card>div:last-child{display:none!important}
+.demo-art{width:100%;aspect-ratio:4/3!important;margin:0!important;padding:0!important;border-radius:0!important;background:transparent!important;overflow:hidden!important}
+.demo-art svg,.demo-art .demo-auto-slide{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important}
+.demo-gallery-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:10px!important}
+@media(max-width:900px){.demo-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}}
+@media(max-width:520px){.demo-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:5px!important}.demo-art{aspect-ratio:1/1!important}}
