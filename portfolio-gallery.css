@@ -90,3 +90,10 @@ body.gallery-open{overflow:hidden}
 .demo-art.has-auto-slides .demo-auto-slide{animation:demoAutoKenBurns 6.4s ease-in-out infinite alternate}
 @keyframes demoAutoKenBurns{from{transform:scale(1)}to{transform:scale(1.045)}}
 @media(prefers-reduced-motion:reduce){.demo-art .demo-auto-slide,.demo-art.has-auto-slides .demo-auto-slide{animation:none;transition:none}}
+
+
+/* Keep every card preview subtly alive, even before custom images are uploaded */
+.demo-art>svg{animation:demoPreviewDrift 7s ease-in-out infinite alternate;transform-origin:center}
+@keyframes demoPreviewDrift{from{transform:scale(1) translateX(0)}to{transform:scale(1.035) translateX(-3px)}}
+.demo-card:nth-child(even) .demo-art>svg{animation-delay:-2.5s}
+@media(prefers-reduced-motion:reduce){.demo-art>svg{animation:none}}
