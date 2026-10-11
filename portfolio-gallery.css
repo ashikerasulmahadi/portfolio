@@ -97,3 +97,17 @@ body.gallery-open{overflow:hidden}
 @keyframes demoPreviewDrift{from{transform:scale(1) translateX(0)}to{transform:scale(1.035) translateX(-3px)}}
 .demo-card:nth-child(even) .demo-art>svg{animation-delay:-2.5s}
 @media(prefers-reduced-motion:reduce){.demo-art>svg{animation:none}}
+
+
+/* Continuous portfolio wall: four artworks per row, natural vertical scrolling */
+.demo-gallery-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.demo-card{border:0;box-shadow:none;background:transparent;transform:none!important;cursor:default}
+.demo-card:hover{box-shadow:none;transform:none!important}
+.demo-card>div:last-child{display:none!important}
+.demo-art{aspect-ratio:4/3;border-radius:0;background:#eee}
+.demo-art svg{width:100%;height:100%;object-fit:cover}
+.demo-card:hover .demo-art svg{transform:none}
+.demo-art .demo-auto-slide{object-fit:cover}
+.portfolio-gallery-modal{display:none!important}
+@media(max-width:900px){.demo-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+@media(max-width:520px){.demo-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.demo-art{aspect-ratio:1/1}}
