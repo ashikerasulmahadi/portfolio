@@ -10,6 +10,62 @@
     let items = [];
     let index = 0;
 
+
+    // Auto-rotate each card's uploaded gallery images in its thumbnail preview.
+    // If no real image exists for a card yet, keep its built-in SVG artwork.
+    const initCardSlideshows = () => {
+      cards.forEach(card => {
+        const art = card.querySelector('.demo-art');
+        if (!art || art.dataset.slideshowReady === '1') return;
+        art.dataset.slideshowReady = '1';
+        const title = card.querySelector('strong')?.textContent?.trim() || 'Design Work';
+        const slug = title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+        const base = 'https://ashikerasulmahadi.github.io/portfolio/assets/gallery/';
+        const extensions = ['.jpg','.jpeg','.png','.webp'];
+        const candidates = [];
+        for (let i=1;i<=8;i++) {
+          const n=String(i).padStart(2,'0');
+          extensions.forEach(ext => candidates.push(base+slug+'-'+n+ext));
+          if (slug === 'identity-direction') extensions.forEach(ext => candidates.push(base+'dentity-direction-'+n+ext));
+        }
+        const loaded = [];
+        let pending = candidates.length;
+        const finish = () => {
+          if (pending !== 0 || !loaded.length || art.dataset.slideshowStarted === '1') return;
+          art.dataset.slideshowStarted = '1';
+          loaded.sort((a,b) => Number(a.slot)-Number(b.slot));
+          const unique = [];
+          const seen = new Set();
+          loaded.forEach(item => { if (!seen.has(item.src)) { seen.add(item.src); unique.push(item); } });
+          if (!unique.length) return;
+          let current = 0;
+          const image = document.createElement('img');
+          image.className = 'demo-auto-slide';
+          image.alt = title + ' portfolio preview';
+          image.loading = 'lazy';
+          image.src = unique[0].src;
+          art.appendChild(image);
+          art.classList.add('has-auto-slides');
+          if (unique.length > 1) {
+            window.setInterval(() => {
+              current = (current + 1) % unique.length;
+              image.classList.add('is-changing');
+              window.setTimeout(() => {
+                image.src = unique[current].src;
+                image.classList.remove('is-changing');
+              }, 220);
+            }, 3200);
+          }
+        };
+        candidates.forEach(src => {
+          const probe = new Image();
+          probe.onload = () => { loaded.push({src, slot: src.match(/-(\d{2})\.(?:jpe?g|png|webp)$/i)?.[1] || '01'}); pending--; finish(); };
+          probe.onerror = () => { pending--; finish(); };
+          probe.src = src;
+        });
+      });
+    };
+
     const makeItems = (card) => {
       const title = card.querySelector('strong')?.textContent?.trim() || 'Design Work';
       const slug = title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -64,6 +120,8 @@
       modal.setAttribute('aria-hidden','false');
       document.body.classList.add('gallery-open');
     };
+
+    initCardSlideshows();
 
     const close=()=>{
       modal.classList.remove('is-open');
