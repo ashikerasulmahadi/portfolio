@@ -1,13 +1,15 @@
-/* Keep portfolio artwork smaller and centered so each image feels less oversized. */
+/* Smaller, centered portfolio artwork with comfortable spacing. */
 #work .uploaded-artwork-wall {
-  width: 60% !important;
-  max-width: 900px !important;
+  width: 45% !important;
+  max-width: 680px !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
 
 #work .uploaded-artwork-item {
-  margin: 0 0 24px !important;
+  display: block !important;
+  width: 100% !important;
+  margin: 0 auto 22px !important;
 }
 
 #work .uploaded-artwork-item img {
@@ -16,10 +18,12 @@
   height: auto !important;
   max-height: none !important;
   object-fit: contain !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 @media (max-width: 650px) {
   #work .uploaded-artwork-wall {
-    width: 94% !important;
+    width: 88% !important;
   }
 }
