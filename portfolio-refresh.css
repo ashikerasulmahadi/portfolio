@@ -97,7 +97,7 @@ body{background:var(--refresh-paper);color:var(--refresh-ink)}
 
 /* Work section polish: captions, filters and a clearer editorial rhythm. */
 .work-filter{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px;align-items:center}
-.work-filter-button{appearance:none;border:1px solid #d5d0c5;background:transparent;color:#535650;border-radius:999px;padding:10px 15px;font:600 11px/1.2 inherit;letter-spacing:.2px;cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}
+.work-filter-button{appearance:none;border:1px solid #d5d0c5;background:transparent;color:#535650;border-radius:999px;padding:10px 15px;font-family:inherit;font-size:11px;font-weight:600;line-height:1.2;letter-spacing:.2px;cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}
 .work-filter-button:hover,.work-filter-button.is-active{background:var(--refresh-green);border-color:var(--refresh-green);color:#fff}
 .work-filter-button:focus-visible{outline:2px solid var(--refresh-accent);outline-offset:3px}
 #work .uploaded-artwork-item{flex-direction:column!important;align-items:stretch!important;gap:0!important}
