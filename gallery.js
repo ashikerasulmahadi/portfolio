@@ -1,42 +1,86 @@
 (() => {
   const images = [
-    ["identity-direction-01.jpg", "Brand identity"],
-    ["identity-direction-02.jpg", "Brand identity"],
-    ["identity-direction-03.jpg", "Brand identity"],
-    ["identity-direction-04.png", "Brand identity"],
-    ["identity-direction-05.png", "Brand identity"],
-    ["identity-direction-06.png", "Brand identity"],
-    ["identity-direction-07.jpg", "Brand identity"],
-    ["business-Card-01.jpg", "Business card"],
-    ["business-card-02.png", "Business card"],
-    ["campaign-creative-01.jpeg", "Campaign creative"],
-    ["campaign-creative-02.png", "Campaign creative"],
-    ["product-label-01.png", "Product label"],
-    ["product-label-02.jpeg", "Product label"],
-    ["product-promotion-01.png", "Product promotion"],
-    ["product-promotion-02.jpeg", "Product promotion"],
-    ["product-promotion-03.jpeg", "Product promotion"],
-    ["product-promotion-04.jpeg", "Product promotion"],
-    ["product-promotion-05.jpeg", "Product promotion"]
+    ["identity-direction-01.jpg", "Brand identity", "Branding"],
+    ["identity-direction-02.jpg", "Brand identity", "Branding"],
+    ["identity-direction-03.jpg", "Brand identity", "Branding"],
+    ["identity-direction-04.png", "Brand identity", "Branding"],
+    ["identity-direction-05.png", "Brand identity", "Branding"],
+    ["identity-direction-06.png", "Brand identity", "Branding"],
+    ["identity-direction-07.jpg", "Brand identity", "Branding"],
+    ["business-Card-01.jpg", "Business card", "Print"],
+    ["business-card-02.png", "Business card", "Print"],
+    ["campaign-creative-01.jpeg", "Campaign creative", "Campaigns"],
+    ["campaign-creative-02.png", "Campaign creative", "Campaigns"],
+    ["product-label-01.png", "Product label", "Packaging"],
+    ["product-label-02.jpeg", "Product label", "Packaging"],
+    ["product-promotion-01.png", "Product promotion", "Campaigns"],
+    ["product-promotion-02.jpeg", "Product promotion", "Campaigns"],
+    ["product-promotion-03.jpeg", "Product promotion", "Campaigns"],
+    ["product-promotion-04.jpeg", "Product promotion", "Campaigns"],
+    ["product-promotion-05.jpeg", "Product promotion", "Campaigns"]
   ];
+
   const init = () => {
     const gallery = document.querySelector("#work .demo-gallery");
     if (gallery) {
       gallery.innerHTML = "";
       gallery.classList.add("uploaded-artwork-wall");
-      images.forEach(([file, label]) => {
+
+      const toolbar = document.createElement("div");
+      toolbar.className = "work-filter";
+      toolbar.setAttribute("role", "group");
+      toolbar.setAttribute("aria-label", "Filter portfolio projects");
+      const categories = ["All work", "Branding", "Print", "Campaigns", "Packaging"];
+      const buttons = new Map();
+
+      const setFilter = (category) => {
+        buttons.forEach((button, label) => {
+          const active = label === category;
+          button.classList.toggle("is-active", active);
+          button.setAttribute("aria-pressed", String(active));
+        });
+        gallery.querySelectorAll(".uploaded-artwork-item").forEach((card) => {
+          card.hidden = category !== "All work" && card.dataset.category !== category;
+        });
+      };
+
+      categories.forEach((category) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "work-filter-button";
+        button.textContent = category;
+        button.addEventListener("click", () => setFilter(category));
+        buttons.set(category, button);
+        toolbar.appendChild(button);
+      });
+      gallery.before(toolbar);
+
+      images.forEach(([file, label, category], index) => {
         const figure = document.createElement("figure");
         figure.className = "uploaded-artwork-item";
+        figure.dataset.category = category;
+        if (index === 0) figure.classList.add("is-featured");
+
         const img = document.createElement("img");
         img.src = "assets/Gallery/" + file;
-        img.alt = label;
-        img.loading = "lazy";
+        img.alt = label + " design project";
+        img.loading = index < 4 ? "eager" : "lazy";
         img.decoding = "async";
         img.onerror = () => figure.remove();
-        figure.appendChild(img);
+
+        const caption = document.createElement("figcaption");
+        caption.className = "artwork-caption";
+        const title = document.createElement("strong");
+        title.textContent = label;
+        const meta = document.createElement("span");
+        meta.textContent = category;
+        caption.append(title, meta);
+        figure.append(img, caption);
         gallery.appendChild(figure);
       });
+      setFilter("All work");
     }
+
     if (!document.querySelector(".floating-behance-link")) {
       const link = document.createElement("a");
       link.className = "floating-behance-link";
@@ -65,6 +109,7 @@
       document.body.appendChild(link);
     }
   };
+
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();
